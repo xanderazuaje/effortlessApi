@@ -25,3 +25,7 @@ func matchHandler(kind TokenKind) RegexHandler {
 		})
 	}
 }
+func commentHandler(lex *Lexer, pattern *regexp.Regexp) {
+	match := pattern.FindString(lex.remainder())
+	lex.advanceN(len(match))
+}

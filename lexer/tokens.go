@@ -6,7 +6,6 @@ type TokenKind int
 
 const (
 	EOF = iota
-	SPACE
 
 	//Keywords
 	TableDeclaration    // "table"
@@ -31,8 +30,6 @@ func (t TokenKind) String() string {
 	switch t {
 	case EOF:
 		return "EOF"
-	case SPACE:
-		return "SPACE"
 	case TableDeclaration:
 		return "table_declaration"
 	case PrivacyMark:
