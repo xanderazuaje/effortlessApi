@@ -1,7 +1,7 @@
 table "user" {
 	name: text,mandatory
 	email: text,unique,mandatory
-	password: []byte,mandatory !
+	password: []byte,mandatory ! //esto es un ejemplo ! "table"
 	description: text
 }
 

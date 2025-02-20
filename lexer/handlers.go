@@ -5,9 +5,6 @@ import (
 	"strings"
 )
 
-func spaceHandler(lex *Lexer, _ *regexp.Regexp) {
-	lex.advanceN(1)
-}
 func defaultHandler(kind TokenKind, value string) RegexHandler {
 	return func(lex *Lexer, pattern *regexp.Regexp) {
 		lex.advanceN(len(value))
@@ -25,7 +22,7 @@ func matchHandler(kind TokenKind) RegexHandler {
 		})
 	}
 }
-func commentHandler(lex *Lexer, pattern *regexp.Regexp) {
-	match := pattern.FindString(lex.remainder())
-	lex.advanceN(len(match))
+func skipHandler(lex *Lexer, pattern *regexp.Regexp) {
+	match := pattern.FindStringIndex(lex.remainder())
+	lex.advanceN(match[1])
 }

@@ -58,8 +58,8 @@ func newLexer(s string) *Lexer {
 		source:    s,
 		sourceLen: len(s),
 		Patterns: []RegexPattern{
-			{regexp.MustCompile("\\s"), spaceHandler},
-			{regexp.MustCompile("//.*"), commentHandler},
+			{regexp.MustCompile("\\s"), skipHandler},
+			{regexp.MustCompile("//.*"), skipHandler},
 			{regexp.MustCompile("table"), defaultHandler(TableDeclaration, "table")},
 			{regexp.MustCompile("---"), defaultHandler(EndTableDeclaration, "---")},
 			{regexp.MustCompile("->"), defaultHandler(RelatedTo, "---")},
