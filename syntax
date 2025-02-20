@@ -1,0 +1,32 @@
+table "user" {
+	name: text,mandatory
+	email: text,unique,mandatory
+	password: []byte,mandatory !
+	description: text
+}
+
+table "comments" {
+	text: text,mandatory
+}
+
+table "private_thing" {
+	name: text
+	other_value: text
+}
+
+table "no_private_thing" {
+	name: text
+	other_value: text
+}
+
+table "messages" {
+	content: text,mandatory
+	status: bool
+}
+
+---
+"user" <- "friends" -> "user"
+"user" <- "comment"
+"user" !- "private_thing"
+"user" -- "non_private_thing"
+"user" <! "messages" !> "user"
